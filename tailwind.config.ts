@@ -63,12 +63,14 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors
-				'focus-orange': '#FF7A00',
-				'focus-turquoise': '#56C5FF',
-				'focus-green': '#7BD389',
-				'focus-yellow': '#FFE066',
-				'focus-red': '#FF4D4F',
+				// Custom colors - Palette adoucie
+				'focus-orange': '#FF9B42',
+				'focus-turquoise': '#7CD8FF',
+				'focus-green': '#9BE7B3',
+				'focus-yellow': '#FFE8A3',
+				'focus-red': '#FF6B6B',
+				'focus-black-soft': '#1A1A1A',
+				'focus-white-soft': '#F7F7F7',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

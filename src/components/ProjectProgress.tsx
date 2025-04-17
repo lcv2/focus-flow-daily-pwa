@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { db, Project, Task } from "@/lib/db";
 import { Progress } from "@/components/ui/progress";
 
@@ -45,7 +46,7 @@ const ProjectProgress = ({ project }: ProjectProgressProps) => {
   }, [project.id]);
   
   return (
-    <div className="mb-6">
+    <Link to={`/project/${project.id}`} className="block mb-6 hover:opacity-90 transition-opacity">
       <div className="flex justify-between items-center mb-2">
         <h3 className="font-bold">{project.nom}</h3>
         <span className="text-sm font-medium">
@@ -59,7 +60,7 @@ const ProjectProgress = ({ project }: ProjectProgressProps) => {
           '--progress-color': project.couleurHex 
         } as React.CSSProperties}
       />
-    </div>
+    </Link>
   );
 };
 

@@ -1,13 +1,12 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { PlusIcon, DownloadIcon } from "lucide-react";
+import { PlusIcon } from "lucide-react";
 import TaskCard from "@/components/TaskCard";
 import ProjectProgress from "@/components/ProjectProgress";
 import WeeklyHeatmap from "@/components/WeeklyHeatmap";
 import TaskForm from "@/components/TaskForm";
 import { db, Task, Project } from "@/lib/db";
-import { appService } from "@/lib/appService";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 
@@ -55,26 +54,13 @@ const Today = () => {
     setLastRefresh(new Date());
   };
   
-  // Handle export
-  const handleExport = async () => {
-    await appService.exportData();
-  };
-  
   return (
     <div className="container py-6">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="mb-8">
         <h1 className="text-2xl md:text-4xl font-bold">
           {format(new Date(), "EEEE d MMMM", { locale: fr })}
         </h1>
-        <Button 
-          onClick={handleExport}
-          variant="outline"
-          className="flex items-center space-x-2"
-        >
-          <DownloadIcon size={16} />
-          <span>Exporter JSON</span>
-        </Button>
       </div>
       
       {/* Add Task Button */}
@@ -118,7 +104,7 @@ const Today = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-8 bg-gray-100 rounded-2xl">
+          <div className="text-center py-8 bg-gray-100 dark:bg-gray-800 rounded-2xl">
             <p className="text-gray-500">Aucune tâche pour aujourd'hui</p>
           </div>
         )}

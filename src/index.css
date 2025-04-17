@@ -35,38 +35,40 @@
  
     --radius: 0.5rem;
 
-    /* FocusLens custom colors */
-    --focus-orange: 28 100% 50%;
-    --focus-turquoise: 199 100% 67%;
-    --focus-green: 115 53% 65%;
-    --focus-yellow: 46 100% 70%;
-    --focus-red: 359 100% 65%;
+    /* FocusLens custom colors - Palette adoucie */
+    --focus-orange: 32 100% 63%;     /* #FF9B42 - ancien #FF7A00 */
+    --focus-turquoise: 196 100% 74%; /* #7CD8FF - ancien #56C5FF */
+    --focus-green: 145 58% 76%;      /* #9BE7B3 - ancien #7BD389 */
+    --focus-yellow: 44 100% 82%;     /* #FFE8A3 - ancien #FFE066 */
+    --focus-red: 0 100% 71%;         /* #FF6B6B - légèrement adouci */
+    --focus-black-soft: 0 0% 10%;    /* #1A1A1A - noir adouci */
+    --focus-white-soft: 0 0% 97%;    /* #F7F7F7 - blanc cassé */
   }
  
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 10%;         /* Utilise le noir adouci comme fond en mode sombre */
+    --foreground: 0 0% 97%;         /* Utilise le blanc cassé comme texte en mode sombre */
  
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 97%;
  
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 97%;
  
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
+    --primary: 0 0% 97%;
+    --primary-foreground: 0 0% 10%;
  
     --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary-foreground: 0 0% 97%;
  
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
  
     --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: 0 0% 97%;
  
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 97%;
  
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
@@ -86,28 +88,28 @@
 
 /* Custom card styles */
 .card-task-completed {
-  @apply bg-[#7BD389] text-white p-4 rounded-2xl shadow-md;
+  @apply bg-[#9BE7B3] text-focus-black-soft p-4 rounded-2xl shadow-md;
 }
 
 .card-task-overdue {
-  @apply bg-[#FF4D4F] text-white p-4 rounded-2xl shadow-md;
+  @apply bg-[#FF6B6B] text-white p-4 rounded-2xl shadow-md;
 }
 
 .card-task-today {
-  @apply bg-[#FFE066] text-black p-4 rounded-2xl shadow-md;
+  @apply bg-[#FFE8A3] text-focus-black-soft p-4 rounded-2xl shadow-md;
 }
 
 /* Custom button styles */
 .btn-play {
-  @apply text-[#7BD389] border-[#7BD389] hover:bg-[#7BD389] hover:text-white;
+  @apply text-[#9BE7B3] border-[#9BE7B3] hover:bg-[#9BE7B3] hover:text-focus-black-soft;
 }
 
 .btn-stop {
-  @apply text-[#FF4D4F] border-[#FF4D4F] hover:bg-[#FF4D4F] hover:text-white;
+  @apply text-[#FF6B6B] border-[#FF6B6B] hover:bg-[#FF6B6B] hover:text-white;
 }
 
 .btn-done {
-  @apply text-[#7BD389] border-[#7BD389];
+  @apply text-[#9BE7B3] border-[#9BE7B3];
 }
 
 /* Project progress bar customization */
@@ -125,3 +127,4 @@
 .section-title {
   @apply text-xl font-bold mb-4;
 }
+
