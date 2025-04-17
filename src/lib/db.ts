@@ -1,4 +1,3 @@
-
 import Dexie, { Table } from 'dexie';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -313,7 +312,8 @@ export async function initDemoData() {
       titre: "Corriger les bugs CSS",
       type: "intensif",
       estHeures: 2,
-      dueDate: yesterday
+      dueDate: yesterday,
+      completedAt: null
     }),
     // Today's tasks
     db.addTask({
@@ -321,14 +321,16 @@ export async function initDemoData() {
       titre: "Mettre à jour la documentation",
       type: "passif",
       estHeures: 1,
-      dueDate: today
+      dueDate: today,
+      completedAt: null
     }),
     db.addTask({
       projectId: projectIds[1],
       titre: "Tutoriel TypeScript",
       type: "intensif",
       estHeures: 3,
-      dueDate: today
+      dueDate: today,
+      completedAt: null
     }),
     // Future task
     db.addTask({
@@ -336,7 +338,8 @@ export async function initDemoData() {
       titre: "Planifier campagne email",
       type: "passif",
       estHeures: 2,
-      dueDate: tomorrow
+      dueDate: tomorrow,
+      completedAt: null
     })
   ]);
 }
