@@ -54,8 +54,10 @@ const ProjectProgress = ({ project }: ProjectProgressProps) => {
       </div>
       <Progress 
         value={progress} 
-        className="h-3 bg-gray-200" 
-        indicatorClassName={`bg-[${project.couleurHex}]`}
+        className={`h-3 bg-gray-200`}
+        style={{ 
+          '--progress-color': project.couleurHex 
+        } as React.CSSProperties}
       />
     </div>
   );

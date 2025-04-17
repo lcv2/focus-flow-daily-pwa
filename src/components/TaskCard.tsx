@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { PlayIcon, StopIcon, CheckIcon } from "lucide-react";
+import { PlayIcon, SquareIcon, CheckIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -112,7 +112,7 @@ const TaskCard = ({ task, project, onUpdate }: TaskCardProps) => {
             
             {isRunning && (
               <Button onClick={handleStop} size="sm" variant="outline" className="btn-stop">
-                <StopIcon size={16} />
+                <SquareIcon size={16} />
               </Button>
             )}
             
