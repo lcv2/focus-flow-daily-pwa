@@ -137,7 +137,7 @@ const ProjectDetail = () => {
       {/* Header */}
       <div className="flex items-center mb-8">
         <Link to="/projects">
-          <Button variant="ghost" size="icon" className="mr-2">
+          <Button variant="ghost" size="icon" className="mr-2 hover:bg-gray-100 dark:hover:bg-gray-800">
             <ArrowLeftIcon className="h-5 w-5" />
           </Button>
         </Link>
@@ -147,7 +147,7 @@ const ProjectDetail = () => {
         >
           {project.nom}
         </h1>
-        <span className="text-sm bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full">
+        <span className="text-sm bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
           {project.categorie === 'travail' ? 'Travail' : 'Apprentissage'}
         </span>
       </div>
@@ -162,7 +162,7 @@ const ProjectDetail = () => {
         </div>
         <Progress 
           value={progress} 
-          className={`h-4 bg-gray-200`}
+          className="h-4 bg-gray-100 dark:bg-gray-700"
           style={{ 
             '--progress-color': project.couleurHex 
           } as React.CSSProperties}
@@ -174,7 +174,7 @@ const ProjectDetail = () => {
         <h2 className="section-title">Tâches</h2>
         
         <Tabs defaultValue={activeFilter} onValueChange={(value) => handleFilterChange(value as TaskFilter)}>
-          <TabsList className="mb-4">
+          <TabsList className="mb-4 bg-gray-100 dark:bg-gray-800">
             <TabsTrigger value="overdue">En retard</TabsTrigger>
             <TabsTrigger value="today">Aujourd'hui</TabsTrigger>
             <TabsTrigger value="upcoming">À venir</TabsTrigger>
@@ -194,7 +194,7 @@ const ProjectDetail = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 bg-gray-100 dark:bg-gray-800 rounded-2xl">
+              <div className="text-center py-8 bg-gray-50 dark:bg-gray-800 rounded-2xl">
                 <p className="text-gray-500">Aucune tâche {activeFilter === "completed" ? "terminée" : ""}</p>
               </div>
             )}

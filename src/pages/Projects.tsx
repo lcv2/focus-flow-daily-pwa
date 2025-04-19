@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PlusIcon, ArrowRightIcon, Trash2Icon, EditIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
@@ -148,70 +149,74 @@ const Projects = () => {
             const stats = getProjectStats(project.id);
             
             return (
-              <Card key={project.id} className="overflow-hidden border-t-4" style={{ borderTopColor: project.couleurHex }}>
-                <CardHeader>
-                  <CardTitle className="flex justify-between items-center">
-                    <span>{project.nom}</span>
-                    <span className="text-sm font-normal px-2 py-1 rounded-full bg-gray-200">
-                      {project.categorie === "travail" ? "Travail" : "Apprentissage"}
-                    </span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 gap-4 text-center mb-4">
-                    <div>
-                      <p className="text-sm text-gray-500">En cours</p>
-                      <p className="text-2xl font-bold">{stats.pendingTasks}</p>
+              <Link key={project.id} to={`/project/${project.id}`} className="block transition-transform hover:scale-105">
+                <Card className="overflow-hidden border-t-4 h-full hover:shadow-md transition-shadow" style={{ borderTopColor: project.couleurHex }}>
+                  <CardHeader>
+                    <CardTitle className="flex justify-between items-center">
+                      <span>{project.nom}</span>
+                      <span className="text-sm font-normal px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-700">
+                        {project.categorie === "travail" ? "Travail" : "Apprentissage"}
+                      </span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-2 gap-4 text-center mb-4">
+                      <div>
+                        <p className="text-sm text-gray-500">En cours</p>
+                        <p className="text-2xl font-bold">{stats.pendingTasks}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500">Terminées</p>
+                        <p className="text-2xl font-bold">{stats.completedTasks}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm text-gray-500">Terminées</p>
-                      <p className="text-2xl font-bold">{stats.completedTasks}</p>
+                    
+                    <div className="w-full h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full rounded-full" 
+                        style={{ 
+                          width: `${stats.progress}%`,
+                          backgroundColor: project.couleurHex 
+                        }}
+                      />
                     </div>
-                  </div>
-                  
-                  <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full rounded-full" 
-                      style={{ 
-                        width: `${stats.progress}%`,
-                        backgroundColor: project.couleurHex 
+                  </CardContent>
+                  <CardFooter className="flex justify-between">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-red-500"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setProjectToDelete(project);
+                        setDeleteDialogOpen(true);
                       }}
-                    />
-                  </div>
-                </CardContent>
-                <CardFooter className="flex justify-between">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-red-500"
-                    onClick={() => {
-                      setProjectToDelete(project);
-                      setDeleteDialogOpen(true);
-                    }}
-                  >
-                    <Trash2Icon size={16} />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-blue-500"
-                    onClick={() => {
-                      // TODO: Edit project functionality
-                      toast({
-                        title: "À venir",
-                        description: "La modification de projet sera disponible dans une prochaine version",
-                      });
-                    }}
-                  >
-                    <EditIcon size={16} />
-                  </Button>
-                </CardFooter>
-              </Card>
+                    >
+                      <Trash2Icon size={16} />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-blue-500"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        // TODO: Edit project functionality
+                        toast({
+                          title: "À venir",
+                          description: "La modification de projet sera disponible dans une prochaine version",
+                        });
+                      }}
+                    >
+                      <EditIcon size={16} />
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </Link>
             );
           })}
         </div>
       ) : (
-        <div className="text-center py-12 bg-gray-100 rounded-2xl">
+        <div className="text-center py-12 bg-gray-50 dark:bg-gray-800 rounded-2xl">
           <p className="text-gray-500 mb-4">Aucun projet trouvé</p>
           <Button 
             onClick={() => setProjectFormOpen(true)}
